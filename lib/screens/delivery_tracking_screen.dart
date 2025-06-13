@@ -1,13 +1,15 @@
+import 'package:coffee_app_new/common.dart';
+import 'package:coffee_app_new/gen/assets.gen.dart';
+import 'package:coffee_app_new/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
+
 import '../models/coffee_product.dart';
 
 class DeliveryTrackingScreen extends StatefulWidget {
   final CoffeeProduct product;
 
-  const DeliveryTrackingScreen({
-    super.key,
-    required this.product,
-  });
+  const DeliveryTrackingScreen({super.key, required this.product});
 
   @override
   State<DeliveryTrackingScreen> createState() => _DeliveryTrackingScreenState();
@@ -23,20 +25,16 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(
-              color: Color(0xFFF5F5F5),
-            ),
+            decoration: const BoxDecoration(color: Color(0xFFF5F5F5)),
             child: Stack(
               children: [
                 // Simulated Map Image
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                        'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=375&h=812&fit=crop&crop=center',
-                      ),
+                      image: AssetImage(Assets.images.imagePage53.path),
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(
                         Colors.grey,
@@ -67,50 +65,55 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                 Positioned(
                   left: 66,
                   top: 211,
-                  child: Container(
-                    width: 24,
-                    height: 24,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFC67C4E),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.location_on,
-                      color: Colors.white,
-                      size: 16,
-                    ),
-                  ),
+                  child:
+                      Container(
+                        width: 24,
+                        height: 24,
+                        decoration: const BoxDecoration(
+                          color: primaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.location_on,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                      ).onTap(() {
+                        snackBar(context, title: "Delivery Location Clicked");
+                      }),
                 ),
 
                 // Driver Icon on Route
                 Positioned(
                   left: 233,
                   top: 311,
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
+                  child:
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: const Icon(
-                      Icons.motorcycle,
-                      color: Color(0xFFC67C4E),
-                      size: 24,
-                    ),
-                  ),
+                        child: const Icon(
+                          Icons.motorcycle,
+                          color: primaryColor,
+                          size: 24,
+                        ),
+                      ).onTap(() {
+                        snackBar(context, title: "Driver Location Clicked");
+                      }),
                 ),
               ],
             ),
           ),
-
 
           // Header Controls
           Positioned(
@@ -122,9 +125,14 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
               children: [
                 // Back Button
                 GestureDetector(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => finish(context),
                   child: Container(
-                    padding: const EdgeInsets.all(10),
+                    padding: EdgeInsets.only(
+                      left: 18,
+                      top: 8,
+                      right: 8,
+                      bottom: 8,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFFEDEDED),
                       borderRadius: BorderRadius.circular(12),
@@ -132,7 +140,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                     child: const Icon(
                       Icons.arrow_back_ios,
                       color: Color(0xFF2A2A2A),
-                      size: 16,
+                      size: 24,
                     ),
                   ),
                 ),
@@ -149,7 +157,9 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                     color: Color(0xFF2A2A2A),
                     size: 24,
                   ),
-                ),
+                ).onTap(() {
+                  snackBar(context, title: "Current Location Clicked");
+                }),
               ],
             ),
           ),
@@ -257,7 +267,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                           ),
                           child: const Icon(
                             Icons.motorcycle,
-                            color: Color(0xFFC67C4E),
+                            color: primaryColor,
                             size: 28,
                           ),
                         ),
@@ -300,8 +310,8 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                         // Driver Profile
                         ClipRRect(
                           borderRadius: BorderRadius.circular(14),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=56&h=56&fit=crop&crop=center',
+                          child: Image.asset(
+                            Assets.images.imagePage51.path,
                             width: 56,
                             height: 56,
                             fit: BoxFit.cover,
@@ -354,19 +364,19 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                         // Call Button
                         GestureDetector(
                           onTap: () {
-                            // Handle call action
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Calling Brooklyn Simmons...'),
-                                backgroundColor: Color(0xFFC67C4E),
-                              ),
+                            launchCall('967770009325');
+                            snackBar(
+                              context,
+                              title: 'Calling Brooklyn Simmons...',
                             );
                           },
                           child: Container(
                             width: 44,
                             height: 44,
                             decoration: BoxDecoration(
-                              border: Border.all(color: const Color(0xFFE3E3E3)),
+                              border: Border.all(
+                                color: const Color(0xFFE3E3E3),
+                              ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Icon(
@@ -380,23 +390,6 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                     ),
                   ),
                 ],
-              ),
-            ),
-          ),
-
-          // Home Indicator
-          Positioned(
-            bottom: 8,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Container(
-                width: 134,
-                height: 5,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF101010),
-                  borderRadius: BorderRadius.circular(100),
-                ),
               ),
             ),
           ),
@@ -423,13 +416,13 @@ class DeliveryRoutePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFC67C4E)
+      ..color = primaryColor
       ..strokeWidth = 4
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
     final path = Path();
-    
+
     // Starting from top-right, going down and left to simulate the delivery route
     path.moveTo(size.width * 0.95, 0);
     path.lineTo(size.width * 0.95, size.height * 0.15);

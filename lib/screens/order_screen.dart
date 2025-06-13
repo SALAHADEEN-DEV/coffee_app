@@ -1,3 +1,4 @@
+import 'package:coffee_app_new/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -95,8 +96,14 @@ class _OrderScreenState extends State<OrderScreen> {
                     ),
                     child: Row(
                       children: [
-                        _buildDeliveryTypeButton("Deliver", true),
-                        _buildDeliveryTypeButton("Pick Up", false),
+                        _buildDeliveryTypeButton(
+                          "Deliver",
+                          deliveryType == "Deliver",
+                        ),
+                        _buildDeliveryTypeButton(
+                          "Pick Up",
+                          deliveryType == "Pick Up",
+                        ),
                       ],
                     ),
                   ),
@@ -141,13 +148,20 @@ class _OrderScreenState extends State<OrderScreen> {
                             _buildActionButton(
                               "Edit Address",
                               Icons.edit_outlined,
-                              () {},
+                              () {
+                                snackBar(
+                                  context,
+                                  title: "Edit Address Clicked",
+                                );
+                              },
                             ),
                             const SizedBox(width: 8),
                             _buildActionButton(
                               "Add Note",
                               Icons.note_outlined,
-                              () {},
+                              () {
+                                snackBar(context, title: "Add Note Clicked");
+                              },
                             ),
                           ],
                         ),
@@ -274,31 +288,34 @@ class _OrderScreenState extends State<OrderScreen> {
                       border: Border.all(color: const Color(0xFFEDEDED)),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.local_offer_outlined,
-                          color: Color(0xFFC67C4E),
-                          size: 20,
-                        ),
-                        const SizedBox(width: 16),
-                        const Expanded(
-                          child: Text(
-                            "1 Discount is Applies",
-                            style: TextStyle(
-                              color: Color(0xFF313131),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
+                    child:
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.local_offer_outlined,
+                              color: primaryColor,
+                              size: 20,
                             ),
-                          ),
-                        ),
-                        const Icon(
-                          Icons.arrow_forward_ios,
-                          color: Color(0xFF2A2A2A),
-                          size: 16,
-                        ),
-                      ],
-                    ),
+                            const SizedBox(width: 16),
+                            const Expanded(
+                              child: Text(
+                                "1 Discount is Applies",
+                                style: TextStyle(
+                                  color: Color(0xFF313131),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xFF2A2A2A),
+                              size: 16,
+                            ),
+                          ],
+                        ).onTap(() {
+                          snackBar(context, title: "Discount Clicked");
+                        }),
                   ),
 
                   const SizedBox(height: 16),
@@ -407,7 +424,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   children: [
                     const Icon(
                       Icons.account_balance_wallet_outlined,
-                      color: Color(0xFFC67C4E),
+                      color: primaryColor,
                       size: 20,
                     ),
                     const SizedBox(width: 16),
@@ -426,7 +443,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           Text(
                             "\$ ${totalPrice.toStringAsFixed(2)}",
                             style: const TextStyle(
-                              color: Color(0xFFC67C4E),
+                              color: primaryColor,
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                             ),
@@ -440,7 +457,9 @@ class _OrderScreenState extends State<OrderScreen> {
                       size: 24,
                     ),
                   ],
-                ),
+                ).onTap(() {
+                  snackBar(context, title: "Drawer Clicked");
+                }),
 
                 const SizedBox(height: 16),
 
@@ -460,7 +479,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     width: double.infinity,
                     height: 56,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFC67C4E),
+                      color: primaryColor,
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: const Center(
@@ -489,14 +508,13 @@ class _OrderScreenState extends State<OrderScreen> {
         onTap: () {
           setState(() {
             deliveryType = title;
+            snackBar(context, title: "$title Clicked");
           });
         },
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected
-                ? const Color(0xFFC67C4E)
-                : const Color(0xFFEDEDED),
+            color: isSelected ? primaryColor : const Color(0xFFEDEDED),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(

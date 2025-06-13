@@ -38,7 +38,7 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F9F9),
+      backgroundColor: systemBgColor,
       body: Column(
         children: [
           // Header
@@ -54,7 +54,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     padding: const EdgeInsets.all(10),
                     child: const Icon(
                       Icons.arrow_back_ios,
-                      color: Color(0xFF2A2A2A),
+                      color: splashBgColor,
                       size: 20,
                     ),
                   ),
@@ -65,7 +65,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     "Order",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF242424),
+                      color: secondary4BgColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
@@ -91,7 +91,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     margin: const EdgeInsets.symmetric(horizontal: 24),
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEDEDED),
+                      color: secondary3BgColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
@@ -119,7 +119,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         const Text(
                           "Delivery Address",
                           style: TextStyle(
-                            color: Color(0xFF242424),
+                            color: secondary4BgColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
@@ -128,7 +128,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         const Text(
                           "Jl. Kpg Sutoyo",
                           style: TextStyle(
-                            color: Color(0xFF313131),
+                            color: secondaryBgColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                           ),
@@ -137,7 +137,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         const Text(
                           "Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.",
                           style: TextStyle(
-                            color: Color(0xFFA2A2A2),
+                            color: secondarySystemBgColor,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
@@ -221,7 +221,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               Text(
                                 widget.product.name,
                                 style: const TextStyle(
-                                  color: Color(0xFF242424),
+                                  color: secondary4BgColor,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -230,7 +230,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               Text(
                                 widget.product.description,
                                 style: const TextStyle(
-                                  color: Color(0xFFA2A2A2),
+                                  color: secondarySystemBgColor,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -255,7 +255,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               child: Text(
                                 productQuantity.toString(),
                                 style: const TextStyle(
-                                  color: Color(0xFF2A2A2A),
+                                  color: splashBgColor,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -285,7 +285,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: const Color(0xFFEDEDED)),
+                      border: Border.all(color: secondary3BgColor),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child:
@@ -301,7 +301,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               child: Text(
                                 "1 Discount is Applies",
                                 style: TextStyle(
-                                  color: Color(0xFF313131),
+                                  color: secondaryBgColor,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -309,7 +309,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             ),
                             const Icon(
                               Icons.arrow_forward_ios,
-                              color: Color(0xFF2A2A2A),
+                              color: splashBgColor,
                               size: 16,
                             ),
                           ],
@@ -334,7 +334,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         const Text(
                           "Payment Summary",
                           style: TextStyle(
-                            color: Color(0xFF242424),
+                            color: secondary4BgColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
@@ -346,7 +346,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             const Text(
                               "Price",
                               style: TextStyle(
-                                color: Color(0xFF313131),
+                                color: secondaryBgColor,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -354,7 +354,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             Text(
                               "\$ ${(productPrice * productQuantity).toStringAsFixed(2)}",
                               style: const TextStyle(
-                                color: Color(0xFF242424),
+                                color: secondary4BgColor,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -368,7 +368,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             const Text(
                               "Delivery Fee",
                               style: TextStyle(
-                                color: Color(0xFF313131),
+                                color: secondaryBgColor,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -378,7 +378,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 Text(
                                   "\$ ${originalDeliveryFee.toStringAsFixed(1)}",
                                   style: const TextStyle(
-                                    color: Color(0xFF2A2A2A),
+                                    color: splashBgColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
                                     decoration: TextDecoration.lineThrough,
@@ -388,7 +388,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                 Text(
                                   "\$ ${discountedDeliveryFee.toStringAsFixed(1)}",
                                   style: const TextStyle(
-                                    color: Color(0xFF242424),
+                                    color: secondary4BgColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -435,7 +435,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           const Text(
                             "Cash/Wallet",
                             style: TextStyle(
-                              color: Color(0xFF242424),
+                              color: secondary4BgColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
@@ -453,7 +453,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     ),
                     const Icon(
                       Icons.keyboard_arrow_down,
-                      color: Color(0xFF2A2A2A),
+                      color: splashBgColor,
                       size: 24,
                     ),
                   ],
@@ -514,14 +514,14 @@ class _OrderScreenState extends State<OrderScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected ? primaryColor : const Color(0xFFEDEDED),
+            color: isSelected ? primaryColor : secondary3BgColor,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: isSelected ? Colors.white : const Color(0xFF242424),
+              color: isSelected ? Colors.white : secondary4BgColor,
               fontSize: 16,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
@@ -538,18 +538,18 @@ class _OrderScreenState extends State<OrderScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(color: const Color(0xFFA2A2A2)),
+          border: Border.all(color: secondarySystemBgColor),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: const Color(0xFF313131), size: 14),
+            Icon(icon, color: secondaryBgColor, size: 14),
             const SizedBox(width: 4),
             Text(
               text,
               style: const TextStyle(
-                color: Color(0xFF313131),
+                color: secondaryBgColor,
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
               ),
@@ -570,7 +570,7 @@ class _OrderScreenState extends State<OrderScreen> {
           border: Border.all(color: const Color(0xFFF9F2ED)),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Icon(icon, color: const Color(0xFF2A2A2A), size: 16),
+        child: Icon(icon, color: splashBgColor, size: 16),
       ),
     );
   }

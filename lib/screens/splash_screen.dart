@@ -1,6 +1,5 @@
 import 'package:coffee_app_new/screens/coffee_shop_home.dart';
 import 'package:coffee_app_new/utils/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -14,7 +13,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -45,9 +43,9 @@ class _SplashScreenState extends State<SplashScreen> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration:   BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage( Assets.images.imagePage11.path),
+                image: AssetImage(Assets.images.imagePage11.path),
                 fit: BoxFit.cover,
               ),
             ),
@@ -67,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   colors: [
                     Colors.transparent,
                     Color.fromRGBO(5, 5, 5, 0.7),
-                    Color(0xFF050505),
+                    secondary2BgColor,
                   ],
                   stops: [0.0, 0.4, 1.0],
                 ),
@@ -106,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     "Welcome to our cozy coffee corner, where every cup is a delightful for you.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFFA2A2A2),
+                      color: secondarySystemBgColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       height: 1.5,
@@ -133,19 +131,20 @@ class _SplashScreenState extends State<SplashScreen> {
                         color: primaryColor,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Get Started",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            height: 1.5,
-                          ),
-                        ),
-                      ).onTap((){
-                        CoffeeShopHome().launch(context, isNewTask: true);
-                      }),
+                      child:
+                          const Center(
+                            child: Text(
+                              "Get Started",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                height: 1.5,
+                              ),
+                            ),
+                          ).onTap(() {
+                            CoffeeShopHome().launch(context, isNewTask: true);
+                          }),
                     ),
                   ),
 

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 const primaryColor = Color(0xFFC67C4E);
 const splashBgColor = Color(0xFF2A2A2A);
-const categoryBgColor = Color(0xFFF3F3F3);
-const selectedCategoryBgColor = Color(0xFFE8ECF7);
-const faqBgColor = Color(0xFFD5DDF2);
-const notificationBgColor = Color(0xFFF2F2F2);
+const systemBgColor = Color(0xFFF9F9F9);
+const secondarySystemBgColor = Color(0xFFA2A2A2);
+const secondaryBgColor = Color(0xFF313131);
+const secondary2BgColor = Color(0xFF050505);
+const secondary3BgColor = Color(0xFFEDEDED);
+const secondary4BgColor = Color(0xFF242424);
 const rattingBgColor = Color(0xFF2DD35c);
 const textColor = Color(0xFF4F4F4F);
 

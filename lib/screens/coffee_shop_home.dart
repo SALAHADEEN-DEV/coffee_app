@@ -1,12 +1,12 @@
 import 'package:coffee_app_new/gen/assets.gen.dart';
 import 'package:coffee_app_new/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:nb_utils/nb_utils.dart';
+
 import '../models/coffee_product.dart';
-import '../widgets/product_card.dart';
-import '../widgets/category_tab.dart';
 import '../widgets/bottom_navigation.dart';
+import '../widgets/category_tab.dart';
+import '../widgets/product_card.dart';
 import 'coffee_detail_screen.dart';
 
 class CoffeeShopHome extends StatefulWidget {
@@ -32,14 +32,15 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
     // TODO: implement initState
     super.initState();
     afterBuildCreated(() async {
-      setStatusBarColor(splashBgColor );
+      setStatusBarColor(splashBgColor);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F9F9),
+      backgroundColor: systemBgColor,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -52,10 +53,11 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [Color(0xFF111111), Color(0xFF313131)],
+                      colors: [Color(0xFF111111), secondaryBgColor],
                     ),
                   ),
                   child: Stack(
+                    clipBehavior: Clip.none,
                     children: [
                       // Location & Profile
                       Positioned(
@@ -72,7 +74,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                 const Text(
                                   "Location",
                                   style: TextStyle(
-                                    color: Color(0xFFA2A2A2),
+                                    color: secondarySystemBgColor,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     letterSpacing: 0.12,
@@ -128,7 +130,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                 height: 52,
                                 padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF2A2A2A),
+                                  color: splashBgColor,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -140,16 +142,25 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                     ),
                                     const SizedBox(width: 8),
                                     Expanded(
-                                      child: TextField(
-                                        style: const TextStyle(color: Colors.white),
-                                        decoration: const InputDecoration(
-                                          hintText: "Search coffee",
-                                          hintStyle: TextStyle(
-                                            color: Color(0xFFA2A2A2),
-                                            fontSize: 14,
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: TextField(
+                                          style: const TextStyle(
+                                            color: Colors.white,
                                           ),
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.zero,
+                                          decoration: const InputDecoration(
+                                            isDense: true,
+                                            // removes default padding
+                                            contentPadding: EdgeInsets.zero,
+                                            // removes top/bottom padding
+                                            hintText: "Search coffee",
+                                            hintStyle: TextStyle(
+                                              color: secondarySystemBgColor,
+                                              fontSize: 14,
+                                            ),
+                                            fillColor: splashBgColor,
+                                            border: InputBorder.none,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -170,7 +181,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                 color: Colors.white,
                                 size: 20,
                               ),
-                            ).onTap((){
+                            ).onTap(() {
                               snackBar(context, title: 'Show Setting');
                             }),
                           ],
@@ -183,13 +194,11 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                         left: 24,
                         right: 24,
                         child: Container(
-                          height: 140,
+                          height: 160,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            image:   DecorationImage(
-                              image: AssetImage(
-                                Assets.images.imagePage21.path
-                              ),
+                            image: DecorationImage(
+                              image: AssetImage(Assets.images.imagePage21.path),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -262,7 +271,10 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                 onTap: () {
                                   setState(() {
                                     activeCategory = category;
-                                    snackBar(context, title: 'Category Tapped :$category');
+                                    snackBar(
+                                      context,
+                                      title: 'Category Tapped :$category',
+                                    );
                                   });
                                 },
                               ),
@@ -276,19 +288,23 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 16,
-                          mainAxisSpacing: 16,
-                          childAspectRatio: 156 / 238,
-                        ),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 16,
+                              mainAxisSpacing: 16,
+                              childAspectRatio: 156 / 238,
+                            ),
                         itemCount: products.length,
                         itemBuilder: (context, index) {
                           return ProductCard(
                             product: products[index],
-                            onAddToCart: () => handleAddToCart(products[index].id),
+                            onAddToCart: () =>
+                                handleAddToCart(products[index].id),
                             onTap: () {
-                              CoffeeDetailScreen(  product: products[index]).launch(context);
+                              CoffeeDetailScreen(
+                                product: products[index],
+                              ).launch(context);
                             },
                           );
                         },
@@ -305,7 +321,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
             bottom: 0,
             left: 0,
             right: 0,
-            child:  BottomNavigationWidget(
+            child: BottomNavigationWidget(
               activeTab: activeBottomTab,
               onTabChanged: (tab) {
                 setState(() {

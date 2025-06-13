@@ -1,3 +1,4 @@
+import 'package:coffee_app_new/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
@@ -16,7 +17,11 @@ class BottomNavigationWidget extends StatelessWidget {
       {"id": "home", "icon": Icons.home_filled, "label": "Home"},
       {"id": "favorites", "icon": Icons.favorite_outline, "label": "Favorites"},
       {"id": "cart", "icon": Icons.shopping_bag_outlined, "label": "Cart"},
-      {"id": "notifications", "icon": Icons.notifications_outlined, "label": "Notifications"},
+      {
+        "id": "notifications",
+        "icon": Icons.notifications_outlined,
+        "label": "Notifications",
+      },
     ];
 
     return Container(
@@ -40,7 +45,7 @@ class BottomNavigationWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: tabs.map((tab) {
           final isActive = activeTab == tab["id"];
-          
+
           return GestureDetector(
             onTap: () => onTabChanged?.call(tab["id"] as String),
             child: Column(
@@ -48,7 +53,7 @@ class BottomNavigationWidget extends StatelessWidget {
               children: [
                 Icon(
                   tab["icon"] as IconData,
-                  color: isActive ? const Color(0xFFC67C4E) : const Color(0xFFA2A2A2),
+                  color: isActive ? primaryColor : secondarySystemBgColor,
                   size: 24,
                 ),
                 const SizedBox(height: 6),
@@ -57,7 +62,7 @@ class BottomNavigationWidget extends StatelessWidget {
                     width: 10,
                     height: 5,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFC67C4E),
+                      color: primaryColor,
                       borderRadius: BorderRadius.circular(18),
                     ),
                   ),

@@ -35,7 +35,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
         setStatusBarColor(splashBgColor);
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFFF9F9F9),
+        backgroundColor: systemBgColor,
         body: Column(
           children: [
             // Header
@@ -55,7 +55,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                       padding: const EdgeInsets.all(10),
                       child: const Icon(
                         Icons.arrow_back_ios,
-                        color: Color(0xFF2A2A2A),
+                        color: splashBgColor,
                         size: 20,
                       ),
                     ),
@@ -65,7 +65,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                   const Text(
                     "Detail",
                     style: TextStyle(
-                      color: Color(0xFF242424),
+                      color: secondary4BgColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
                     ),
@@ -82,7 +82,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                       padding: const EdgeInsets.all(10),
                       child: Icon(
                         isFavorite ? Icons.favorite : Icons.favorite_outline,
-                        color: const Color(0xFF2A2A2A),
+                        color: splashBgColor,
                         size: 24,
                       ),
                     ),
@@ -146,7 +146,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                                     Text(
                                       widget.product.name,
                                       style: const TextStyle(
-                                        color: Color(0xFF242424),
+                                        color: secondary4BgColor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -155,7 +155,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                                     const Text(
                                       "Ice/Hot",
                                       style: TextStyle(
-                                        color: Color(0xFFA2A2A2),
+                                        color: secondarySystemBgColor,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -181,7 +181,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                                             text: widget.product.rating
                                                 .toString(),
                                             style: const TextStyle(
-                                              color: Color(0xFF2A2A2A),
+                                              color: splashBgColor,
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700,
                                             ),
@@ -189,7 +189,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                                           const TextSpan(
                                             text: " (230)",
                                             style: TextStyle(
-                                              color: Color(0xFFA2A2A2),
+                                              color: secondarySystemBgColor,
                                               fontSize: 12,
                                               fontWeight: FontWeight.w400,
                                             ),
@@ -244,7 +244,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                           const Text(
                             "Description",
                             style: TextStyle(
-                              color: Color(0xFF242424),
+                              color: secondary4BgColor,
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
@@ -257,7 +257,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                                   text:
                                       "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk the fo.. ",
                                   style: TextStyle(
-                                    color: Color(0xFFA2A2A2),
+                                    color: secondarySystemBgColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5,
@@ -290,7 +290,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                           const Text(
                             "Size",
                             style: TextStyle(
-                              color: Color(0xFF242424),
+                              color: secondary4BgColor,
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
@@ -433,7 +433,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
           child: Text(
             size,
             style: TextStyle(
-              color: isSelected ? primaryColor : const Color(0xFF242424),
+              color: isSelected ? primaryColor : secondary4BgColor,
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),

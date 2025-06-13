@@ -134,12 +134,12 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                       bottom: 8,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEDEDED),
+                      color: secondary3BgColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(
                       Icons.arrow_back_ios,
-                      color: Color(0xFF2A2A2A),
+                      color: splashBgColor,
                       size: 24,
                     ),
                   ),
@@ -149,12 +149,12 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFEDEDED),
+                    color: secondary3BgColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Icon(
                     Icons.gps_fixed,
-                    color: Color(0xFF2A2A2A),
+                    color: splashBgColor,
                     size: 24,
                   ),
                 ).onTap(() {
@@ -199,7 +199,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                       const Text(
                         "10 minutes left",
                         style: TextStyle(
-                          color: Color(0xFF242424),
+                          color: secondary4BgColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ),
@@ -211,7 +211,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                             TextSpan(
                               text: "Delivery to ",
                               style: TextStyle(
-                                color: Color(0xFFA2A2A2),
+                                color: secondarySystemBgColor,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -219,7 +219,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                             TextSpan(
                               text: "Jl. Kpg Sutoyo",
                               style: TextStyle(
-                                color: Color(0xFF2A2A2A),
+                                color: splashBgColor,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
                               ),
@@ -279,7 +279,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                               Text(
                                 "Delivered your order",
                                 style: TextStyle(
-                                  color: Color(0xFF242424),
+                                  color: secondary4BgColor,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -288,7 +288,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                               Text(
                                 "We will deliver your goods to you in the shortest possible time.",
                                 style: TextStyle(
-                                  color: Color(0xFFA2A2A2),
+                                  color: secondarySystemBgColor,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -343,7 +343,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                               Text(
                                 "Brooklyn Simmons",
                                 style: TextStyle(
-                                  color: Color(0xFF242424),
+                                  color: secondary4BgColor,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -352,7 +352,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                               Text(
                                 "Personal Courier",
                                 style: TextStyle(
-                                  color: Color(0xFFA2A2A2),
+                                  color: secondarySystemBgColor,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -381,7 +381,7 @@ class _DeliveryTrackingScreenState extends State<DeliveryTrackingScreen> {
                             ),
                             child: const Icon(
                               Icons.phone,
-                              color: Color(0xFF2A2A2A),
+                              color: splashBgColor,
                               size: 20,
                             ),
                           ),

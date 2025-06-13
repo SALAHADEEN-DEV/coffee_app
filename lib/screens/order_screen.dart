@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
+
 import '../models/coffee_product.dart';
 import 'delivery_tracking_screen.dart';
 
@@ -6,11 +8,7 @@ class OrderScreen extends StatefulWidget {
   final CoffeeProduct product;
   final int quantity;
 
-  const OrderScreen({
-    super.key,
-    required this.product,
-    this.quantity = 1,
-  });
+  const OrderScreen({super.key, required this.product, this.quantity = 1});
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();
@@ -28,9 +26,13 @@ class _OrderScreenState extends State<OrderScreen> {
   }
 
   double get productPrice => 4.53;
+
   double get originalDeliveryFee => 2.0;
+
   double get discountedDeliveryFee => 1.0;
-  double get totalPrice => (productPrice * productQuantity) + discountedDeliveryFee;
+
+  double get totalPrice =>
+      (productPrice * productQuantity) + discountedDeliveryFee;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,6 @@ class _OrderScreenState extends State<OrderScreen> {
       backgroundColor: const Color(0xFFF9F9F9),
       body: Column(
         children: [
-
           // Header
           Container(
             height: 44,
@@ -47,13 +48,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 // Back Button
                 GestureDetector(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => finish(context),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     child: const Icon(
                       Icons.arrow_back_ios,
                       color: Color(0xFF2A2A2A),
-                      size: 16,
+                      size: 20,
                     ),
                   ),
                 ),
@@ -74,7 +75,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 const SizedBox(width: 44),
               ],
             ),
-          ),
+          ).paddingTop(20),
 
           // Scrollable Content
           Expanded(
@@ -227,16 +228,13 @@ class _OrderScreenState extends State<OrderScreen> {
                         // Quantity Controls
                         Row(
                           children: [
-                            _buildQuantityButton(
-                              Icons.remove,
-                              () {
-                                if (productQuantity > 1) {
-                                  setState(() {
-                                    productQuantity--;
-                                  });
-                                }
-                              },
-                            ),
+                            _buildQuantityButton(Icons.remove, () {
+                              if (productQuantity > 1) {
+                                setState(() {
+                                  productQuantity--;
+                                });
+                              }
+                            }),
                             Container(
                               width: 40,
                               alignment: Alignment.center,
@@ -249,14 +247,11 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ),
                             ),
-                            _buildQuantityButton(
-                              Icons.add,
-                              () {
-                                setState(() {
-                                  productQuantity++;
-                                });
-                              },
-                            ),
+                            _buildQuantityButton(Icons.add, () {
+                              setState(() {
+                                productQuantity++;
+                              });
+                            }),
                           ],
                         ),
                       ],
@@ -266,10 +261,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   const SizedBox(height: 16),
 
                   // Section Divider
-                  Container(
-                    height: 4,
-                    color: const Color(0xFFF9F2ED),
-                  ),
+                  Container(height: 4, color: const Color(0xFFF9F2ED)),
 
                   const SizedBox(height: 16),
 
@@ -312,10 +304,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   const SizedBox(height: 16),
 
                   // Section Divider
-                  Container(
-                    height: 4,
-                    color: const Color(0xFFF9F2ED),
-                  ),
+                  Container(height: 4, color: const Color(0xFFF9F2ED)),
 
                   const SizedBox(height: 16),
 
@@ -462,9 +451,8 @@ class _OrderScreenState extends State<OrderScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DeliveryTrackingScreen(
-                          product: widget.product,
-                        ),
+                        builder: (context) =>
+                            DeliveryTrackingScreen(product: widget.product),
                       ),
                     );
                   },
@@ -490,23 +478,6 @@ class _OrderScreenState extends State<OrderScreen> {
               ],
             ),
           ),
-
-          // Home Indicator
-          Container(
-            height: 34,
-            padding: const EdgeInsets.only(bottom: 8),
-            color: Colors.white,
-            child: Center(
-              child: Container(
-                width: 134,
-                height: 5,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF242424),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -523,7 +494,9 @@ class _OrderScreenState extends State<OrderScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFFC67C4E) : const Color(0xFFEDEDED),
+            color: isSelected
+                ? const Color(0xFFC67C4E)
+                : const Color(0xFFEDEDED),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
@@ -553,11 +526,7 @@ class _OrderScreenState extends State<OrderScreen> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              color: const Color(0xFF313131),
-              size: 14,
-            ),
+            Icon(icon, color: const Color(0xFF313131), size: 14),
             const SizedBox(width: 4),
             Text(
               text,
@@ -583,11 +552,7 @@ class _OrderScreenState extends State<OrderScreen> {
           border: Border.all(color: const Color(0xFFF9F2ED)),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Icon(
-          icon,
-          color: const Color(0xFF2A2A2A),
-          size: 16,
-        ),
+        child: Icon(icon, color: const Color(0xFF2A2A2A), size: 16),
       ),
     );
   }

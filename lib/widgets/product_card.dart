@@ -1,3 +1,4 @@
+import 'package:coffee_app_new/utils/colors.dart';
 import 'package:flutter/material.dart';
 import '../models/coffee_product.dart';
 import 'star_rating.dart';
@@ -40,15 +41,15 @@ class ProductCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.network(
+                child: Image.asset(
                   product.imageUrl,
-                  width: 140,
-                  height: 128,
+                  width: 160,
+                  height: 140,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
-                      width: 140,
-                      height: 128,
+                      width: 160,
+                      height: 140,
                       decoration: BoxDecoration(
                         color: const Color(0xFF8B4513),
                         borderRadius: BorderRadius.circular(12),
@@ -129,7 +130,7 @@ class ProductCard extends StatelessWidget {
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFC67C4E),
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Icon(

@@ -1,3 +1,4 @@
+import 'package:coffee_app_new/gen/assets.gen.dart';
 import 'package:coffee_app_new/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,12 +24,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
   final categories = ["All Coffee", "Machiato", "Latte", "Americano"];
 
   void handleAddToCart(int productId) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Added product $productId to cart'),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    snackBar(context, title: 'Added product $productId to cart');
   }
 
   @override
@@ -36,11 +32,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
     // TODO: implement initState
     super.initState();
     afterBuildCreated(() async {
-      setStatusBarColor(
-        splashBgColor,
-        statusBarIconBrightness: Brightness.light,
-      );
-
+      setStatusBarColor(splashBgColor );
     });
   }
 
@@ -178,7 +170,9 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                 color: Colors.white,
                                 size: 20,
                               ),
-                            ),
+                            ).onTap((){
+                              snackBar(context, title: 'Show Setting');
+                            }),
                           ],
                         ),
                       ),
@@ -192,9 +186,9 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                           height: 140,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            image: const DecorationImage(
-                              image: NetworkImage(
-                                "https://images.unsplash.com/photo-1442550528053-c431ecb55509?w=327&h=140&fit=crop&crop=center",
+                            image:   DecorationImage(
+                              image: AssetImage(
+                                Assets.images.imagePage21.path
                               ),
                               fit: BoxFit.cover,
                             ),
@@ -268,6 +262,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                                 onTap: () {
                                   setState(() {
                                     activeCategory = category;
+                                    snackBar(context, title: 'Category Tapped :$category');
                                   });
                                 },
                               ),
@@ -293,14 +288,7 @@ class _CoffeeShopHomeState extends State<CoffeeShopHome> {
                             product: products[index],
                             onAddToCart: () => handleAddToCart(products[index].id),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CoffeeDetailScreen(
-                                    product: products[index],
-                                  ),
-                                ),
-                              );
+                              CoffeeDetailScreen(  product: products[index]).launch(context);
                             },
                           );
                         },

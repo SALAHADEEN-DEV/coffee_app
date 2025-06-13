@@ -1,3 +1,5 @@
+import 'package:coffee_app_new/gen/assets.gen.dart';
+
 class CoffeeProduct {
   final int id;
   final String name;
@@ -17,37 +19,37 @@ class CoffeeProduct {
 
   static List<CoffeeProduct> getSampleProducts() {
     return [
-      const CoffeeProduct(
+      CoffeeProduct(
         id: 1,
         name: "Caffe Mocha",
         description: "Deep Foam",
         price: "\$ 4.53",
         rating: 4.8,
-        imageUrl: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=140&h=128&fit=crop&crop=center",
+        imageUrl: Assets.images.imagePage24.path,
       ),
-      const CoffeeProduct(
+      CoffeeProduct(
         id: 2,
         name: "Flat White",
         description: "Espresso",
         price: "\$ 3.53",
         rating: 4.8,
-        imageUrl: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=140&h=128&fit=crop&crop=center",
+        imageUrl: Assets.images.imagePage25.path,
       ),
-      const CoffeeProduct(
+      CoffeeProduct(
         id: 3,
         name: "Mocha Fusi",
         description: "Ice/Hot",
         price: "\$ 7.53",
         rating: 4.8,
-        imageUrl: "https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=140&h=128&fit=crop&crop=center",
+        imageUrl: Assets.images.imagePage22.path,
       ),
-      const CoffeeProduct(
+      CoffeeProduct(
         id: 4,
         name: "Caffe Panna",
         description: "Ice/Hot",
         price: "\$ 5.53",
         rating: 4.8,
-        imageUrl: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=140&h=128&fit=crop&crop=center",
+        imageUrl: Assets.images.imagePage41.path,
       ),
     ];
   }
